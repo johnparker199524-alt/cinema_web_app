@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 // La consegna mostra l'header "Home | Calendario Uscite | News" su OGNI
 // schermata del mockup (slide 4, 5, 18-23...), quindi questo componente è
@@ -6,7 +7,22 @@ import { NavLink } from "react-router-dom";
 // pagine. La ricerca (dinamica, con debounce) è stata spostata nel
 // componente <SearchBar/>, che resta montato SOLO nella Home, come
 // richiesto: qui non c'è più alcun campo di ricerca.
+//
+// Su schermi piccoli i link collassano in un menu "hamburger": non usiamo
+// il collapse JS di Bootstrap (il bundle JS non è importato nel progetto,
+// solo il CSS), quindi il toggle è gestito con uno stato React + classi
+// CSS custom, coerenti con l'identità "Blu Notte" del resto dell'app.
 export default function Navbar(): JSX.Element {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  // Chiude il menu ad ogni cambio di rotta (es. tap su un link, back/forward
+  // da tastiera, ecc.), così non resta mai aperto "per sbaglio" dopo la
+  // navigazione.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-cinema navbar-dark sticky-top">
       <div className="container">
@@ -14,7 +30,24 @@ export default function Navbar(): JSX.Element {
           <span className="brand-icon" aria-hidden="true">🎬</span>
           <span className="brand-text">CinemaWebApp</span>
         </NavLink>
-        <div className="navbar-nav ms-auto gap-3">
+
+        <button
+          type="button"
+          className={`navbar-hamburger${isOpen ? " is-open" : ""}`}
+          aria-expanded={isOpen}
+          aria-controls="main-nav-links"
+          aria-label={isOpen ? "Chiudi il menu" : "Apri il menu"}
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          <span className="navbar-hamburger-bar" aria-hidden="true"></span>
+          <span className="navbar-hamburger-bar" aria-hidden="true"></span>
+          <span className="navbar-hamburger-bar" aria-hidden="true"></span>
+        </button>
+
+        <div
+          id="main-nav-links"
+          className={`navbar-nav ms-auto gap-3${isOpen ? " is-open" : ""}`}
+        >
           <NavLink className="nav-link" to="/" end>
             Home
           </NavLink>

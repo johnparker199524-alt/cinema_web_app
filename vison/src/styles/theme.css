@@ -304,6 +304,101 @@ small.text-muted,
 }
 
 /* -------------------------------------------------------------------------
+   Navbar responsive — su schermi piccoli i link collassano in un menu
+   "hamburger" gestito via stato React (vedi Navbar.tsx), non dal JS di
+   Bootstrap (non incluso nel progetto). Il bottone è nascosto su schermi
+   larghi, dove i link restano in linea come prima.
+   ------------------------------------------------------------------------- */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--cinema-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.navbar-hamburger:hover {
+  border-color: var(--cinema-accent);
+  background: rgba(91, 140, 255, .08);
+}
+.navbar-hamburger:focus-visible {
+  outline: 2px solid var(--cinema-accent);
+  outline-offset: 2px;
+}
+.navbar-hamburger-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--cinema-accent);
+  transition: transform .25s ease, opacity .2s ease, background-color .2s ease;
+}
+/* Le tre barre si trasformano in una "X" quando il menu è aperto. */
+.navbar-hamburger.is-open .navbar-hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-hamburger.is-open .navbar-hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-hamburger.is-open .navbar-hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-hamburger {
+    display: inline-flex;
+  }
+
+  /* Pannello a comparsa: parte da altezza 0 e si apre verso il basso,
+     coerente con le altre transizioni "morbide" dell'app. Resta montato
+     nel DOM (niente display:none secco) per poter animare l'apertura. */
+  .navbar-cinema .navbar-nav {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    gap: 0 !important;
+    margin-top: 0;
+    background: rgba(10, 16, 36, .96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--cinema-border);
+    border-radius: 0 0 10px 10px;
+    transition: max-height .3s ease, opacity .25s ease, margin-top .3s ease;
+  }
+  .navbar-cinema .navbar-nav.is-open {
+    max-height: 320px;
+    opacity: 1;
+    margin-top: .75rem;
+  }
+  .navbar-cinema .navbar-nav .nav-link {
+    padding: .85rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+  }
+  .navbar-cinema .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+  /* Su mobile la sottolineatura animata non serve: lo sfondo del link
+     attivo comunica meglio lo stato in un elenco verticale stretto. */
+  .navbar-cinema .navbar-nav .nav-link::after {
+    display: none;
+  }
+  .navbar-cinema .navbar-nav .nav-link.active {
+    background: rgba(91, 140, 255, .12);
+    border-radius: 6px;
+  }
+}
+
+/* -------------------------------------------------------------------------
    Hero — il "signature moment" della Home: titolo marquee con una
    pennellata di luce che scorre lentamente sul bordo, come un'insegna.
    ------------------------------------------------------------------------- */
