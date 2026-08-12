@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      SICUREZZA — Content-Security-Policy (difesa in profondità contro XSS).
+
+      Questo è un frontend statico (build Vite): gli header HTTP "veri"
+      (X-Frame-Options, Strict-Transport-Security...) vanno impostati dal
+      server/CDN che serve i file compilati (nginx, Vercel, Netlify...), non
+      da questo meta tag — un <meta> non può impostare X-Frame-Options né
+      HSTS, solo un sottoinsieme di direttive CSP. Questo tag è comunque
+      utile come prima barriera indipendente dal deployment scelto.
+
+      Direttive, spiegate:
+        default-src 'self'      -> per default nulla viene caricato da
+                                    origini diverse dalla nostra.
+        img-src 'self' https://image.tmdb.org https://picsum.photos https://*.picsum.photos data:
+                                 -> le locandine dei film arrivano dalla CDN
+                                    immagini di TMDB (image.tmdb.org, vedi
+                                    src/tmdb/config.ts); picsum.photos serve
+                                    invece le immagini delle News, che restano
+                                    sui dati demo di Firebase (vedi
+                                    firebase-data/seed-news-only.json) —
+                                    ATTENZIONE: picsum.photos risponde con un
+                                    redirect (302) verso un suo sottodominio
+                                    (es. fastly.picsum.photos) per servire il
+                                    file immagine vero e proprio, e il
+                                    browser applica img-src anche all'URL di
+                                    destinazione dopo il redirect: serve
+                                    quindi anche il wildcard *.picsum.photos,
+                                    non solo il dominio "nudo", altrimenti
+                                    alcune immagini (quelle che passano dal
+                                    redirect) vengono bloccate in silenzio;
+                                    "data:" serve per eventuali icone inline.
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com
+                                 -> 'unsafe-inline' è necessario perché molti
+                                    componenti React usano style={{...}}
+                                    (attributo style inline sul DOM, non
+                                    <style> arbitrari iniettati da terzi);
+                                    fonts.googleapis.com serve il CSS di
+                                    Bebas Neue/Manrope (vedi theme.css).
+        font-src 'self' https://fonts.gstatic.com
+                                 -> 'self' serve per i font locali (bootstrap-icons,
+                                    serviti da node_modules/dist tramite Vite);
+                                    fonts.gstatic.com per i .woff2 di Google Fonts.
+        script-src 'self' https://*.firebasedatabase.app
+                                 -> il bundle JS compilato da Vite, PIÙ gli
+                                    script di long-polling che il Realtime
+                                    Database inietta dinamicamente quando il
+                                    WebSocket non è disponibile o cade (l'SDK
+                                    carica un vero tag <script src="…/.lp?...">
+                                    per quel fallback: è governato da
+                                    script-src, non da connect-src, anche se
+                                    concettualmente è "solo" una chiamata dati).
+        connect-src 'self'
+                    https://api.themoviedb.org
+                    https://*.firebasedatabase.app
+                    wss://*.firebasedatabase.app
+                    https://firebaseinstallations.googleapis.com
+                                 -> chiamate XHR/fetch verso l'API REST di
+                                    TMDB (api.themoviedb.org, film e
+                                    calendario uscite: src/tmdb/), PIÙ
+                                    XHR/fetch/WebSocket verso il Realtime
+                                    Database (l'SDK Firebase usa WebSocket
+                                    quando possibile, con fallback su HTTPS
+                                    a lunga durata; il dominio
+                                    "firebasedatabase.app" varia in base alla
+                                    region scelta nella console, es.
+                                    "europe-west1", quindi si autorizza con
+                                    wildcard invece dell'host esatto), usato
+                                    ora SOLO per la sezione News.
+                                    firebaseinstallations.googleapis.com è
+                                    contattato internamente dall'SDK anche
+                                    senza usare Auth/Analytics.
+        object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+                                 -> nessun <object>/<embed> (vettore XSS
+                                    classico), nessuna <base> dirottabile,
+                                    e la pagina non può essere incorporata
+                                    in un <iframe> altrui (anti-clickjacking,
+                                    equivalente a X-Frame-Options: DENY).
+        frame-src https://www.youtube-nocookie.com
+                                 -> l'unico <iframe> che questa app incorpora
+                                    E' il player del trailer nella pagina
+                                    Trama (dati da TMDB, GET
+                                    /movie/{id}/videos): usiamo il dominio
+                                    "no cookie" di YouTube, che di default è
+                                    vietato da default-src 'self' come ogni
+                                    altra origine esterna.
+
+      NOTA PER IL DEPLOY: se cambi region del Realtime Database, dominio
+      immagini o aggiungi un CDN per i font, aggiorna questa policy di
+      conseguenza — una CSP troppo restrittiva rispetto alle risorse reali
+      blocca SILENZIOSAMENTE il caricamento, spesso senza una voce visibile
+      nel tab Network del browser (controlla sempre la console, che mostra
+      "Content Security Policy directive... blocked").
+
+      NOTA PER LO SVILUPPO LOCALE: "npm run build" (produzione) non è
+      interessato, ma "npm run dev" con il plugin React di Vite inietta in
+      questa pagina un piccolo script inline per il Fast Refresh: con
+      script-src 'self' rigoroso, il browser lo blocca e in console vedrai
+      un avviso CSP (l'app resta comunque utilizzabile, solo l'hot-reload
+      "automatico" ne risente). Se durante lo sviluppo questo infastidisce,
+      aggiungi temporaneamente 'unsafe-inline' a script-src qui sotto — ma
+      NON portarlo in produzione.
+    -->
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               img-src 'self' https://image.tmdb.org https://picsum.photos https://*.picsum.photos data:;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               font-src 'self' https://fonts.gstatic.com;
+               script-src 'self' https://*.firebasedatabase.app;
+               connect-src 'self' https://api.themoviedb.org https://*.firebasedatabase.app wss://*.firebasedatabase.app https://firebaseinstallations.googleapis.com;
+               object-src 'none';
+               base-uri 'self';
+               frame-ancestors 'none';
+               frame-src https://www.youtube-nocookie.com;" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Cinema Web App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

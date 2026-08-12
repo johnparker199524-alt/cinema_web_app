@@ -1,0 +1,188 @@
+{
+  "news": {
+    "1": {
+      "id": 1,
+      "titolo": "Festival di Venezia: annunciati i vincitori",
+      "sommario": "Trionfo per il cinema dautore alla 83a mostra del cinema",
+      "immagineUrl": "https://picsum.photos/seed/news1/600/300",
+      "contenuto": "Il Leone dOro è stato assegnato a un film che ha emozionato critica e pubblico. La giuria ha premiato il coraggio narrativo e la fotografia eccezionale.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "2": {
+      "id": 2,
+      "titolo": "Anteprima autunno: i film più attesi in sala",
+      "sommario": "Dalle grandi produzioni hollywoodiane al cinema indipendente",
+      "immagineUrl": "https://picsum.photos/seed/news2/600/300",
+      "contenuto": "Una panoramica completa sulle prossime uscite nei mesi di ottobre e novembre. I cinefili hanno di che gioire con titoli di ogni genere.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "3": {
+      "id": 3,
+      "titolo": "Record di incassi per le produzioni estive",
+      "sommario": "I cinema italiani registrano unaffluenza senza precedenti",
+      "immagineUrl": "https://picsum.photos/seed/news3/600/300",
+      "contenuto": "Grazie alle iniziative promozionali e alla qualità dei titoli in programmazione, le sale rilanciano il settore cinematografico.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "4": {
+      "id": 4,
+      "titolo": "Il ritorno del cinema di genere",
+      "sommario": "Horror e fantascienza tornano protagonisti",
+      "immagineUrl": "https://picsum.photos/seed/news4/600/300",
+      "contenuto": "Dopo anni di dominio delle commedie, il pubblico riscopre il brivido e la meraviglia dei film di genere.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "5": {
+      "id": 5,
+      "titolo": "Intervista al regista emergente dellanno",
+      "sommario": "Un talento italiano conquista Hollywood",
+      "immagineUrl": "https://picsum.photos/seed/news5/600/300",
+      "contenuto": "Il giovane regista racconta il suo percorso dai cortometraggi indipendenti alla produzione internazionale.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "6": {
+      "id": 6,
+      "titolo": "Il cinema in streaming cresce ancora",
+      "sommario": "Le piattaforme investono in produzioni originali",
+      "immagineUrl": "https://picsum.photos/seed/news6/600/300",
+      "contenuto": "I dati confermano che il consumo di contenuti in streaming continua a crescere, ma le sale resistono.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "7": {
+      "id": 7,
+      "titolo": "Cannes 2026: i film italiani in concorso",
+      "sommario": "Tre produzioni italiane selezionate per la competizione",
+      "immagineUrl": "https://picsum.photos/seed/news7/600/300",
+      "contenuto": "Il cinema italiano torna protagonista sulla Croisette con storie intense e interpreti straordinari.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "8": {
+      "id": 8,
+      "titolo": "Il restauro dei classici",
+      "sommario": "Le cineteche digitali salvano il patrimonio cinematografico",
+      "immagineUrl": "https://picsum.photos/seed/news8/600/300",
+      "contenuto": "Un progetto ambizioso riporta in vita capolavori del passato con restauri in 4K e nuove colonne sonore.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "9": {
+      "id": 9,
+      "titolo": "Cinema e scuola: un progetto educativo",
+      "sommario": "Le sale aprono le porte agli studenti",
+      "immagineUrl": "https://picsum.photos/seed/news9/600/300",
+      "contenuto": "Uniniziativa porta il cinema nelle scuole per educare i giovani alla settima arte e alla lettura delle immagini.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "10": {
+      "id": 10,
+      "titolo": "I mestieri del cinema",
+      "sommario": "Dietro le quinte: chi lavora sul set",
+      "immagineUrl": "https://picsum.photos/seed/news10/600/300",
+      "contenuto": "Un viaggio tra le professioni meno conosciute del mondo del cinema, dai macchinisti ai colorist.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "11": {
+      "id": 11,
+      "titolo": "Il futuro delle sale cinematografiche",
+      "sommario": "Tra innovazione e tradizione",
+      "immagineUrl": "https://picsum.photos/seed/news11/600/300",
+      "contenuto": "Le sale si reinventano con proiezioni immersive, eventi speciali e formule di abbonamento flessibili.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "12": {
+      "id": 12,
+      "titolo": "Donne registe: una nuova era",
+      "sommario": "Sempre più registe dietro la macchina da presa",
+      "immagineUrl": "https://picsum.photos/seed/news12/600/300",
+      "contenuto": "I dati mostrano una crescita costante della presenza femminile nella regia cinematografica italiana.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "13": {
+      "id": 13,
+      "titolo": "Il documentario italiano conquista il mondo",
+      "sommario": "Successi internazionali per il cinema del reale",
+      "immagineUrl": "https://picsum.photos/seed/news13/600/300",
+      "contenuto": "I documentaristi italiani raccontano storie che emozionano e fanno riflettere, conquistando festival e pubblico.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "14": {
+      "id": 14,
+      "titolo": "La colonna sonora perfetta",
+      "sommario": "Come la musica trasforma un film",
+      "immagineUrl": "https://picsum.photos/seed/news14/600/300",
+      "contenuto": "Compositori e registi raccontano il rapporto tra immagine e suono nella creazione cinematografica.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "15": {
+      "id": 15,
+      "titolo": "Il cinema dautore incontra il grande pubblico",
+      "sommario": "Successi inaspettati al botteghino",
+      "immagineUrl": "https://picsum.photos/seed/news15/600/300",
+      "contenuto": "Film dautore superano i blockbuster grazie al passaparola e alla qualità delle storie raccontate.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "16": {
+      "id": 16,
+      "titolo": "Effetti speciali made in Italy",
+      "sommario": "I maghi degli VFX italiani nel mondo",
+      "immagineUrl": "https://picsum.photos/seed/news16/600/300",
+      "contenuto": "Studi italiani di effetti visivi lavorano alle produzioni internazionali più importanti.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "17": {
+      "id": 17,
+      "titolo": "Il cinema di animazione italiano cresce",
+      "sommario": "Nuovi studi e talenti emergenti",
+      "immagineUrl": "https://picsum.photos/seed/news17/600/300",
+      "contenuto": "Lanimazione italiana vive una stagione di rinascimento con produzioni di qualità internazionale.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "18": {
+      "id": 18,
+      "titolo": "Festival locali: piccole rassegne grandi emozioni",
+      "sommario": "Il cinema nei borghi italiani",
+      "immagineUrl": "https://picsum.photos/seed/news18/600/300",
+      "contenuto": "Rassegne cinematografiche nei piccoli centri portano cultura e turismo nelle aree interne del paese.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "19": {
+      "id": 19,
+      "titolo": "Il cinema come terapia",
+      "sommario": "Film e benessere mentale",
+      "immagineUrl": "https://picsum.photos/seed/news19/600/300",
+      "contenuto": "Studi confermano che andare al cinema ha benefici psicologici e favorisce la socializzazione.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "20": {
+      "id": 20,
+      "titolo": "Le sale storiche italiane",
+      "sommario": "Un patrimonio da salvare",
+      "immagineUrl": "https://picsum.photos/seed/news20/600/300",
+      "contenuto": "Cinema storici chiusi o in difficoltà: un appello per salvare luoghi di cultura e memoria collettiva.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "21": {
+      "id": 21,
+      "titolo": "La nuova generazione di attori italiani",
+      "sommario": "Talenti under 30 da tenere docchio",
+      "immagineUrl": "https://picsum.photos/seed/news21/600/300",
+      "contenuto": "Una panoramica sui giovani interpreti che stanno rivoluzionando il panorama cinematografico italiano.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "22": {
+      "id": 22,
+      "titolo": "Il cinema e la tecnologia AI",
+      "sommario": "Opportunità e rischi dellintelligenza artificiale",
+      "immagineUrl": "https://picsum.photos/seed/news22/600/300",
+      "contenuto": "Il dibattito sulluso dellAI nella sceneggiatura e nella produzione cinematografica si fa sempre più acceso.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    },
+    "23": {
+      "id": 23,
+      "titolo": "Il ritorno del musical",
+      "sommario": "Il genere che fa cantare il pubblico",
+      "immagineUrl": "https://picsum.photos/seed/news23/600/300",
+      "contenuto": "Dopo anni di assenza, il musical torna nelle sale con produzioni spettacolari e colonne sonore indimenticabili.",
+      "dataPubblicazione": "2026-08-11T12:00:00"
+    }
+  }
+}
