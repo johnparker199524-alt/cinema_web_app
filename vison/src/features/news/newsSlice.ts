@@ -6,18 +6,22 @@ interface NewsState {
   status: RequestStatus;
   error: string | null;
 }
-const initialState: NewsState = { items: [], status: "idle", error: null };
+const initialState: NewsState = {
+  items: [],
+  status: "idle",
+  error: null,
+};
 export const fetchNews = createAsyncThunk<
   NewsArticle[],
   void,
-  { rejectValue: string }
+  {
+    rejectValue: string;
+  }
 >("news/fetchAll", async (_, { rejectWithValue }) => {
   try {
     return await getAllNews();
   } catch (err) {
-    return rejectWithValue(
-      err instanceof Error ? err.message : "Errore	sconosciuto",
-    );
+    return rejectWithValue(err instanceof Error ? err.message : "Errore	sconosciuto");
   }
 });
 const newsSlice = createSlice({

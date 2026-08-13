@@ -14,14 +14,14 @@ const initialState: FilmDetailState = {
 export const fetchFilmDetail = createAsyncThunk<
   FilmDetail,
   number,
-  { rejectValue: string }
+  {
+    rejectValue: string;
+  }
 >("filmDetail/fetch", async (id, { rejectWithValue }) => {
   try {
     return await getFilmById(id);
   } catch (err) {
-    return rejectWithValue(
-      err instanceof Error ? err.message : "Errore	sconosciuto",
-    );
+    return rejectWithValue(err instanceof Error ? err.message : "Errore	sconosciuto");
   }
 });
 const filmDetailSlice = createSlice({

@@ -14,14 +14,14 @@ const initialState: NewsDetailState = {
 export const fetchNewsDetail = createAsyncThunk<
   NewsArticle,
   number,
-  { rejectValue: string }
+  {
+    rejectValue: string;
+  }
 >("newsDetail/fetch", async (id, { rejectWithValue }) => {
   try {
     return await getNewsById(id);
   } catch (err) {
-    return rejectWithValue(
-      err instanceof Error ? err.message : "Errore	sconosciuto",
-    );
+    return rejectWithValue(err instanceof Error ? err.message : "Errore	sconosciuto");
   }
 });
 const newsDetailSlice = createSlice({

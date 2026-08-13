@@ -13,18 +13,17 @@ const initialState: FilmsSearchState = {
   error: null,
   query: "",
 };
-
 export const searchFilms = createAsyncThunk<
   FilmSummary[],
   string,
-  { rejectValue: string }
+  {
+    rejectValue: string;
+  }
 >("filmsSearch/search", async (query, { rejectWithValue }) => {
   try {
     return await searchFilmsApi(query);
   } catch (err) {
-    return rejectWithValue(
-      err instanceof Error ? err.message : "Errore	sconosciuto",
-    );
+    return rejectWithValue(err instanceof Error ? err.message : "Errore	sconosciuto");
   }
 });
 const filmsSearchSlice = createSlice({

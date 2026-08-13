@@ -1,33 +1,18 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-
-// La consegna mostra l'header "Home | Calendario Uscite | News" su OGNI
-// schermata del mockup (slide 4, 5, 18-23...), quindi questo componente è
-// ora montato globalmente da <Layout> in App.tsx e appare su tutte le
-// pagine. La ricerca (dinamica, con debounce) è stata spostata nel
-// componente <SearchBar/>, che resta montato SOLO nella Home, come
-// richiesto: qui non c'è più alcun campo di ricerca.
-//
-// Su schermi piccoli i link collassano in un menu "hamburger": non usiamo
-// il collapse JS di Bootstrap (il bundle JS non è importato nel progetto,
-// solo il CSS), quindi il toggle è gestito con uno stato React + classi
-// CSS custom, coerenti con l'identità "Blu Notte" del resto dell'app.
 export default function Navbar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
-  // Chiude il menu ad ogni cambio di rotta (es. tap su un link, back/forward
-  // da tastiera, ecc.), così non resta mai aperto "per sbaglio" dopo la
-  // navigazione.
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
-
   return (
     <nav className="navbar navbar-expand-lg navbar-cinema navbar-dark sticky-top">
       <div className="container">
         <NavLink className="navbar-brand" to="/" end>
-          <span className="brand-icon" aria-hidden="true">🎬</span>
+          <span className="brand-icon" aria-hidden="true">
+            🎬
+          </span>
           <span className="brand-text">CinemaWebApp</span>
         </NavLink>
 

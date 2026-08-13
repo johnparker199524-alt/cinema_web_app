@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-
 interface ImportMetaEnv {
   readonly VITE_TMDB_API_KEY?: string;
   readonly VITE_TMDB_ACCESS_TOKEN?: string;
@@ -10,9 +9,7 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_STORAGE_BUCKET: string;
   readonly VITE_FIREBASE_MESSAGING_SENDER_ID: string;
   readonly VITE_FIREBASE_APP_ID: string;
-  // Se in futuro aggiungerai altre variabili nel file .env, dichiarale qui (es. readonly VITE_APP_NAME: string;)
 }
-
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
